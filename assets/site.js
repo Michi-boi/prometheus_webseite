@@ -3,6 +3,7 @@ const nav = document.querySelector('#navigation');
 toggle?.addEventListener('click', () => { const open = toggle.getAttribute('aria-expanded') !== 'true'; toggle.setAttribute('aria-expanded', String(open)); nav.classList.toggle('open', open); });
 document.addEventListener('keydown', e => { if(e.key === 'Escape' && nav?.classList.contains('open')) {nav.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.focus();} });
 const form = document.querySelector('#anfrage');
+const siteRoot = new URL(document.querySelector('.brand')?.getAttribute('href') || './', document.baseURI);
 document.querySelectorAll('.video-load').forEach(button => {
   button.addEventListener('click', () => {
     const id = button.dataset.video;
@@ -12,6 +13,7 @@ document.querySelectorAll('.video-load').forEach(button => {
     const consent = document.createElement('div');
     consent.className = 'video-consent';
     consent.innerHTML = '<p><strong>Video von YouTube laden?</strong></p><p>Mit dem Laden stimmt ihr zu, dass Daten wie eure IP-Adresse an Google übertragen werden. Eine Verarbeitung in den USA und Speicherzugriffe auf eurem Gerät sind möglich. <a href="/datenschutz/#youtube">Mehr zum Datenschutz</a></p><div class="actions"><button type="button" class="button video-accept">YouTube-Video laden</button><button type="button" class="button ghost video-cancel">Abbrechen</button></div>';
+    consent.querySelector('a').href = new URL('datenschutz/#youtube', siteRoot).href;
     container.append(consent);
     consent.querySelector('.video-cancel').addEventListener('click',()=>{consent.remove();button.focus()});
     const accept = consent.querySelector('.video-accept');
