@@ -1,0 +1,51 @@
+/* Scroll choreography: all content remains visible without JavaScript. */
+header{position:sticky;top:0;background:#111110ed;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:background .25s,box-shadow .25s}
+header.is-scrolled{background:#111110f5;box-shadow:0 12px 40px #0002}
+header::after{content:"";position:absolute;left:0;bottom:-1px;width:100%;height:2px;background:var(--accent);transform:scaleX(var(--page-progress,0));transform-origin:left;pointer-events:none}
+.heading-line{display:inline-block;vertical-align:top;overflow:clip;padding-bottom:.12em;margin-bottom:-.12em;max-width:100%}
+.heading-word{display:inline-block;vertical-align:top;max-width:100%}
+.motion-photo{position:relative;overflow:hidden;height:560px;margin:0;background:#141413}
+.motion-photo>img{display:block;width:100%;height:100%;object-fit:cover}
+.button{transition:background .2s,border-color .2s,box-shadow .2s}
+.button>span,.text-link{transition:transform .25s,color .25s}
+.button:hover>span{transform:translate(3px,-3px)}
+.event-card .photo{position:relative}
+.motion-active .hero>img{transform:translate3d(0,var(--hero-image-y,0px),0) scale(var(--hero-scale,1.07));will-change:transform}
+.motion-active .hero>.wrap{transform:translate3d(0,var(--hero-copy-y,0px),0);opacity:var(--hero-opacity,1)}
+.motion-active .motion-photo>img{transform:translate3d(0,var(--photo-y,0px),0) scale(1.13);will-change:transform}
+.motion-active .event-card img{transform:translate3d(0,var(--photo-y,0px),0) scale(1.12);transition:filter .4s}
+.motion-active .event-card:hover img{filter:brightness(1.13)}
+.reveal-ready{opacity:0;transform:translate3d(0,28px,0);transition:opacity .8s ease,transform .9s cubic-bezier(.2,.65,.25,1);transition-delay:var(--reveal-delay,0ms)}
+.reveal-ready.is-revealed{opacity:1;transform:translate3d(0,0,0)}
+h1.reveal-ready,h2.reveal-ready{opacity:1;transform:none}
+.reveal-ready .heading-word{opacity:0;transform:translate3d(0,110%,0);transition:transform 1s cubic-bezier(.2,.65,.25,1),opacity .8s;transition-delay:var(--line-delay,0ms)}
+.reveal-ready.is-revealed .heading-word{opacity:1;transform:translate3d(0,0,0)}
+.reveal-ready:focus-within{opacity:1;transform:none}
+.home-page .section-top{margin-bottom:52px}
+.home-page section:not(.hero){padding-top:110px;padding-bottom:110px}
+@media(min-width:1001px) and (min-height:650px) and (prefers-reduced-motion:no-preference){
+  .home-page .story-split{align-items:start;min-height:780px;gap:9%}
+  .home-page .story-split>.motion-photo{position:sticky;top:130px;height:min(620px,calc(100svh - 165px))}
+  .home-page .story-split>.story-copy{padding-top:100px;padding-bottom:120px;min-height:780px;display:flex;flex-direction:column;justify-content:center}
+  .home-page .story-split>.story-copy h2{font-size:clamp(38px,3.6vw,58px)}
+  .home-page .story-copy>.text-link{align-self:flex-start}
+  .motion-active .home-events .event-card:nth-child(2){translate:0 var(--card-offset,0px)}
+}
+@media(max-width:760px){
+  .hero h1{font-size:clamp(40px,12.8vw,54px)}
+  .motion-photo{height:380px}
+  .home-page section:not(.hero){padding-top:65px;padding-bottom:65px}
+  .home-page .section-top{margin-bottom:30px}
+  .reveal-ready{transform:translate3d(0,15px,0);transition-duration:.6s}
+  .motion-active .hero>img{transform:translate3d(0,var(--hero-image-y,0px),0) scale(1.08)}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal-ready,.reveal-ready .heading-word{opacity:1!important;transform:none!important;transition:none!important}
+  .motion-active .hero>img,.motion-active .hero>.wrap,.motion-active .motion-photo>img,.motion-active .event-card img{transform:none!important;opacity:1!important;will-change:auto}
+  header::after{display:none}
+  .button:hover>span{transform:none}
+}
+@media print{header{position:static}.reveal-ready,.reveal-ready .heading-word{opacity:1!important;transform:none!important}.motion-photo{position:static!important}.hero>.wrap{opacity:1!important;transform:none!important}}
+
+@media(min-width:1001px) and (min-height:650px) and (prefers-reduced-motion:no-preference){.home-page .story-split>.portal-video{position:sticky;top:130px}.home-page .story-split>.portal-video .video-player{height:min(620px,calc(100svh - 165px))}}
