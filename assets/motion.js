@@ -10,7 +10,7 @@
     const frame = document.createElement('div');
     frame.className = 'motion-photo';
     img.before(frame); frame.append(img);
-    if (home) {
+    if (home && !frame.parentElement.classList.contains('artist-story')) {
       frame.parentElement.classList.add('story-split');
       [...frame.parentElement.children].filter(child => child !== frame).forEach(child => child.classList.add('story-copy'));
     }

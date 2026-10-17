@@ -22,3 +22,23 @@
 /* Das bestehende Portalbild bleibt im hohen Rahmen als Videovorschau. */
 .festival-story{align-items:center}.festival-story>img,.festival-story>.motion-photo{height:auto;aspect-ratio:5/4}.festival-story p:last-child,.festival-enquiry p:last-child{margin-bottom:0}.festival-enquiry{max-width:820px;margin:64px auto 0;padding-top:36px;border-top:1px solid var(--line);color:var(--muted)}.festival-enquiry h3{color:var(--text)}.festival-enquiry .text-link{font-size:inherit}@media(max-width:760px){.festival-story>img,.festival-story>.motion-photo{height:auto;aspect-ratio:5/4}.festival-enquiry{margin-top:36px;padding-top:28px}}
 .portal-video{min-width:0}.portal-video .video-player{height:560px;aspect-ratio:auto}.portal-video .video-load img{opacity:1}.portal-video .video-play{width:76px;height:76px;font-size:28px}.portal-video .video-label{bottom:24px;font-size:17px}.portal-video .video-note{font-size:12px;line-height:1.6;color:var(--muted);margin:12px 0 0}.portal-video .text-link{font-size:12px}@media(max-width:760px){.portal-video .video-player{height:420px}}
+
+/* Same frame and crop for the artist story on the home and about pages. */
+.artist-story{align-items:center}
+.artist-story>img,.artist-story>.motion-photo{width:100%;height:auto;aspect-ratio:4/5;position:relative;top:auto}
+.artist-story>.motion-photo>img{position:absolute;inset:0;transform:none!important}
+
+/* A voluntary, remembered choice. Both main actions have equal visual weight. */
+.privacy-settings,.privacy-back{padding:0;border:0;background:none;color:inherit;font:inherit;cursor:pointer;text-align:left}
+.privacy-settings:hover,.privacy-back:hover{color:var(--accent)}
+.privacy-panel{position:fixed;inset:auto 24px 24px auto;margin:0;width:min(600px,calc(100% - 48px));max-width:none;max-height:calc(100svh - 48px);padding:30px;background:#191918;color:var(--text);border:1px solid #ffffff42;box-shadow:0 16px 70px #0009;z-index:100;overflow:auto;font:14px/1.6 Arial,Helvetica,sans-serif}
+.privacy-panel::backdrop{background:#0009;backdrop-filter:blur(3px)}
+.privacy-panel h2{font:400 30px/1.2 Georgia,serif;margin:0 0 18px;letter-spacing:-.02em}
+.privacy-panel p{margin:0 0 16px;color:var(--muted)}
+.privacy-panel .privacy-status{font-size:12px;color:var(--text)}
+.privacy-actions{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.privacy-actions .button{font-size:13px;padding:12px 14px;gap:0}
+.privacy-links{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:20px}
+.privacy-links a,.privacy-back{font-size:12px}
+.privacy-back{margin-left:auto}
+@media(max-width:760px){.privacy-panel{inset:auto 12px 12px;width:calc(100% - 24px);max-height:calc(100svh - 24px);padding:22px;font-size:13px}.privacy-panel h2{font-size:26px}.privacy-actions{gap:8px}.privacy-actions .button{padding:11px 8px;font-size:12px}}
