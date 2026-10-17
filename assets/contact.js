@@ -38,8 +38,15 @@
     const timeout = setTimeout(() => controller.abort(), 30000);
     let accepted = false;
     try {
+      const data = new FormData(form);
+      const date = data.get('datum');
+      // Keep the date input's ISO value; format only the submitted message.
+      // Rearrange the parts directly to avoid any timezone conversion.
+      if (typeof date === 'string' && /^\d{4,}-\d{2}-\d{2}$/.test(date)) {
+        data.set('datum', date.split('-').reverse().join('.'));
+      }
       const response = await fetch(form.action, {
-        method: 'POST', body: new FormData(form),
+        method: 'POST', body: data,
         headers: {Accept: 'application/json'}, signal: controller.signal,
         credentials: 'omit'
       });
