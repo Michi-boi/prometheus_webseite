@@ -2,7 +2,6 @@ const toggle = document.querySelector('.menu');
 const nav = document.querySelector('#navigation');
 toggle?.addEventListener('click', () => { const open = toggle.getAttribute('aria-expanded') !== 'true'; toggle.setAttribute('aria-expanded', String(open)); nav.classList.toggle('open', open); });
 document.addEventListener('keydown', e => { if(e.key === 'Escape' && nav?.classList.contains('open')) {nav.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.focus();} });
-const form = document.querySelector('#anfrage');
 document.querySelectorAll('[data-random-gallery]').forEach(gallery => {
   const slides = [...gallery.querySelectorAll('.slideshow-slide')];
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
@@ -48,24 +47,3 @@ document.querySelectorAll('[data-random-gallery]').forEach(gallery => {
   addEventListener('pageshow',schedule);
   schedule();
 });
-if(form) {
-  const kind = form.querySelector('[name="art"]');
-  const other = form.querySelector('#sonstige-art');
-  kind.addEventListener('change', () => {other.hidden = kind.value !== 'Sonstiges'; other.querySelector('input').required = !other.hidden;});
-  form.addEventListener('submit', async e => {
-    e.preventDefault();
-    if(!form.reportValidity()) return;
-    const status = document.querySelector('#form-status');
-    const submit = form.querySelector('button[type="submit"]');
-    submit.disabled = true; status.textContent = 'Deine Anfrage wird gesendet …';
-    try {
-      const response = await fetch(form.action, {method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
-      const type = response.headers.get('content-type') || '';
-      if(!type.includes('application/json')) throw new Error('Der Formularversand ist hier noch nicht verfügbar. Schreibe uns bitte an info@prometheus-feuershow.de.');
-      const result = await response.json();
-      if(!response.ok) throw new Error(result.message || 'Die Anfrage konnte nicht gesendet werden. Bitte versuche es erneut.');
-      status.textContent = result.message; form.reset(); other.hidden = true; other.querySelector('input').required = false;
-    } catch(error) {status.textContent = error.message === 'Failed to fetch' ? 'Keine Verbindung. Deine Eingaben bleiben erhalten. Bitte versuche es erneut oder schreibe an info@prometheus-feuershow.de.' : error.message;}
-    finally {submit.disabled = false;}
-  });
-}
