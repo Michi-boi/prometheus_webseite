@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <defs><radialGradient id="glow"><stop stop-color="#6b3c1d"/><stop offset="1" stop-color="#171716"/></radialGradient></defs>
+  <rect width="1200" height="900" fill="url(#glow)"/>
+  <g fill="none" stroke="#ffad55" stroke-width="2" opacity=".35">
+    <circle cx="600" cy="450" r="290"/><circle cx="600" cy="450" r="245"/>
+    <ellipse cx="600" cy="450" rx="345" ry="155" transform="rotate(-35 600 450)"/>
+    <ellipse cx="600" cy="450" rx="345" ry="155" transform="rotate(35 600 450)"/>
+  </g>
+  <text x="600" y="545" text-anchor="middle" font-family="Georgia,serif" font-size="300" fill="#f3f0e9">J</text>
+</svg>
