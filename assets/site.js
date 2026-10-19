@@ -4,6 +4,9 @@ toggle?.addEventListener('click', () => { const open = toggle.getAttribute('aria
 document.addEventListener('keydown', e => { if(e.key === 'Escape' && nav?.classList.contains('open')) {nav.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.focus();} });
 document.querySelectorAll('[data-random-gallery]').forEach(gallery => {
   const slides = [...gallery.querySelectorAll('.slideshow-slide')];
+  if (!slides.length) return;
+  const requestedInterval = Number(gallery.dataset.interval);
+  const interval = Number.isFinite(requestedInterval) && requestedInterval >= 1000 ? requestedInterval : 3000;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   let current = -1;
   let order = [];
@@ -31,7 +34,7 @@ document.querySelectorAll('[data-random-gallery]').forEach(gallery => {
   function schedule() {
     clearTimeout(timer);
     if (slides.length>1 && visible && !document.hidden && !reduced.matches) {
-      timer = setTimeout(() => {choose();schedule();},3000);
+      timer = setTimeout(() => {choose();schedule();},interval);
     }
   }
   choose();
