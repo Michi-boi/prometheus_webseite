@@ -16,7 +16,7 @@
 .festival-team-heading{margin-top:100px;max-width:800px}
 .festival-team-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;margin-top:38px}
 .festival-team-card{margin:0;min-width:0}
-.festival-team-card .festival-photo{aspect-ratio:4/3;object-position:center}
+.festival-team-card .festival-photo{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:center}
 .festival-team-card figcaption{padding:18px 0 10px;border-bottom:1px solid var(--line)}
 .festival-team-card h3{font-size:28px;margin:0;line-height:1.25}
 .festival-media{padding-top:30px}

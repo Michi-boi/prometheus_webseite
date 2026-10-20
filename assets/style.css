@@ -10,6 +10,9 @@
 @media(max-width:760px){.reviews-grid,.social-grid{grid-template-columns:1fr}.showreel-bottom{display:block}.showreel-bottom p{margin-bottom:12px}.showreel .video-play{width:54px;height:54px;font-size:20px}.showreel .video-label{font-size:14px;bottom:10px}.social-card{padding:22px;gap:16px}.social-card strong{font-size:27px}.social-symbol{font-size:30px}.social-card>span>span{overflow-wrap:anywhere}}
 .package-details{border:1px solid #ffad5570;margin:0 0 24px;background:#ffad550a}.package-details summary{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:18px 16px;list-style:none;color:var(--accent);font-size:15px;font-weight:700;line-height:1.4;cursor:pointer}.package-details summary::-webkit-details-marker{display:none}.package-details summary::marker{content:""}.package-details summary:hover{background:#ffad5515}.package-details[open] summary{border-bottom:1px solid #ffad5540}.details-hint{display:block;color:var(--muted);font-size:11px;font-weight:400;letter-spacing:.01em;margin-top:4px}.details-toggle{position:relative;flex-shrink:0;width:30px;height:30px;border:1px solid #ffad5570;border-radius:50%}.details-toggle::before,.details-toggle::after{content:"";position:absolute;top:50%;left:50%;height:2px;width:12px;background:var(--accent);transform:translate(-50%,-50%)}.details-toggle::after{transform:translate(-50%,-50%) rotate(90deg)}.package-details[open] .details-toggle::after{display:none}.details-body{padding:4px 18px 18px;font-size:14px;color:var(--muted)}.details-body h4{font-size:14px;line-height:1.5;color:var(--text);margin:20px 0 10px}.price-card .details-body p{padding:0;margin:18px 0 0;max-width:none;font-size:14px;line-height:1.7}.details-body ul{margin:0;padding-left:19px}.details-body li{padding-left:3px;margin:7px 0;line-height:1.6}.details-body li::marker{color:var(--accent)}
 .package-grid{align-items:start}
+.package-brand{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px}
+.package-brand h3{min-width:0;margin:0;overflow-wrap:anywhere}
+.package-brand-logo{display:block;flex:none;width:64px;height:78px;object-fit:contain}
 .workshop-intro .prose h2{margin-top:0}.workshop-photo{margin:0 auto 48px}.workshop-photo img{display:block;width:100%;height:auto}.workshop-gallery-section .section-top{justify-content:center;text-align:center}.workshop-slideshow{position:relative;width:min(100%,480px);aspect-ratio:1;margin:0 auto;overflow:hidden;background:var(--bg)}.slideshow-slide{position:absolute;inset:0;margin:0;opacity:0;visibility:hidden;transition:opacity .65s ease,visibility 0s .65s}.slideshow-slide.is-current{opacity:1;visibility:visible;transition:opacity .65s ease,visibility 0s}.slideshow-slide img{display:block;width:100%;height:100%;object-fit:contain}
 @media(max-width:760px){.workshop-photo{margin-bottom:32px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
@@ -27,6 +30,12 @@
 .artist-story{align-items:center}
 .artist-story>img,.artist-story>.motion-photo{width:100%;height:auto;aspect-ratio:4/5;position:relative;top:auto}
 .artist-story>.motion-photo>img{position:absolute;inset:0;transform:none!important}
+
+/* Kompakter Einstieg auf Handys, ohne die Desktopgestaltung zu ändern. */
+@media(max-width:760px){
+  .home-page .hero{min-height:0;align-items:flex-start;padding:0}
+  .home-page .hero>.wrap{margin:0 auto;padding:48px 0 28px}
+}
 
 /* A voluntary, remembered choice. Both main actions have equal visual weight. */
 .privacy-settings,.privacy-back{padding:0;border:0;background:none;color:inherit;font:inherit;cursor:pointer;text-align:left}

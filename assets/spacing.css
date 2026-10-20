@@ -1,0 +1,61 @@
+/* Gemeinsame vertikale Abstände, nach den Seitengestaltungen laden. */
+:root{
+  --section-space:48px;
+  --home-section-space:56px;
+}
+
+/* Medienköpfe behalten ihre eigene Höhe; Inhaltsabschnitte werden kompakter. */
+main>section:where(:not(.hero,.image-hero)){
+  padding-block:var(--section-space);
+}
+.home-page main>section:not(.hero){
+  padding-block:var(--home-section-space);
+}
+.section-top,.home-page .section-top{margin-bottom:28px}
+.prose h2{margin-top:32px}
+.prose>h2:first-child{margin-top:0}
+.page-head{padding:40px 0 28px}
+.image-hero{min-height:380px;margin-bottom:28px}
+.image-hero .page-head{padding:40px 0}
+
+/* Beim Einstieg nicht Außen- und Innenabstand addieren. */
+.home-page .hero{min-height:620px;padding:0}
+.home-page .hero>.wrap{padding:48px 0}
+@media(min-width:1600px){
+  .home-page .hero{min-height:660px}
+}
+
+/* Die Bildrahmen bleiben erhalten; die Scrollstrecke wird kürzer. */
+@media(min-width:1001px) and (min-height:650px) and (prefers-reduced-motion:no-preference){
+  .home-page .story-split{min-height:0}
+  .home-page .story-split>.story-copy{
+    min-height:0;
+    padding-block:40px;
+    align-self:center;
+  }
+}
+
+.festival-crew-facts{margin-top:44px}
+.festival-team-heading{margin-top:50px}
+.festival-promo{margin-top:40px}
+.festival-day{margin-top:40px}
+.festival-technical{margin-top:36px}
+.festival-enquiry{margin-top:36px;padding-top:24px}
+main>section.festival-media{padding-top:24px}
+
+@media(max-width:760px){
+  :root{
+    --section-space:32px;
+    --home-section-space:36px;
+  }
+  .section-top,.home-page .section-top{margin-bottom:24px}
+  .prose h2{margin-top:28px}
+  .prose>h2:first-child{margin-top:0}
+  .page-head{padding:32px 0 24px}
+  .image-hero{min-height:320px;margin-bottom:20px}
+  .image-hero .page-head{padding:32px 0}
+  .home-page .hero{min-height:0}
+  .home-page .hero>.wrap{padding:48px 0 28px}
+  .festival-crew-facts,.festival-team-heading{margin-top:32px}
+  .festival-promo,.festival-day,.festival-technical,.festival-enquiry{margin-top:28px}
+}
