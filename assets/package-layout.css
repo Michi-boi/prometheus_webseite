@@ -1,0 +1,41 @@
+/* Gleiche Kartenhöhen pro Reihe, Inhalte im natürlichen Fluss von oben. */
+.package-grid{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  align-items:stretch;
+  gap:20px;
+}
+.package-grid>.price-card{min-width:0;justify-content:flex-start}
+.package-details-slot{margin-top:0}
+.package-media-slot>.package-photo,.package-media-slot>.package-video{margin:0 0 24px}
+.package-media-slot>.package-photo{aspect-ratio:16/9}
+.package-action>.text-link{display:inline-block;margin-top:0}
+
+/* In der dreispaltigen Übersicht erhält Amaterasu eine eigene breite Zeile. */
+.package-grid>.package-feature{
+  grid-column:1/-1;
+  display:grid;
+  grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);
+  align-items:start;
+  gap:40px;
+}
+.package-feature-copy{min-width:0}
+.package-feature-copy>.text-link{display:inline-block;margin-top:0}
+.package-feature>.package-photo{margin:0;aspect-ratio:4/3}
+
+@media(max-width:1000px){
+  .package-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  /* Zehn normale Karten bilden fünf Paare; Medien bleiben vor dem Link. */
+  .package-grid>.package-feature{
+    grid-column:auto;
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    gap:0;
+  }
+  .package-feature-copy{display:contents}
+  .package-feature>.package-photo{order:1;margin:0 0 24px;aspect-ratio:16/9}
+  .package-feature-copy>.text-link{order:2;align-self:flex-start;margin-top:0}
+}
+@media(max-width:760px){
+  .package-grid{grid-template-columns:1fr}
+}
